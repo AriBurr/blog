@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Posts</h1>
+  <hr>
+  <% if @pages.any? %>
+    <% @pages.each do |page| %>
+      <h2><%= link_to page.title, page_path(page.id) %></h2><br>
+      <p> By <%= page.author %><p><br>
+      <p><%= truncate(page.content, length: 150) %><p>
+      <hr>
+    <% end %>
+  <% else %>
+    <h4>No Posts, Make One!</h4>
+  <% end %>
+
+  <%= link_to 'New Post', new_page_path, class: 'btn btn-primary' %>
+</div>
